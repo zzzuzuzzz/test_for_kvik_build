@@ -1,25 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Theme;
+namespace App\Http\Controllers\Admin\Task;
 
-use App\Http\Controllers\Admin\NotificationsForController;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Task;
 
 class IndexController extends Controller
 {
     public function __invoke() {
-        $categories = Category::all();
-        $passedTime = NotificationsForController::passedTime();
-        $passedTimeApplication = NotificationsForController::passedTimeApplication();
-        $questions = NotificationsForController::questions();
-        $applications = NotificationsForController::applications();
-        $numberNotification = NotificationsForController::numberNotification();
-        $questionsForMsg = NotificationsForController::questionsForMsg();
-        $applicationsForMsg = NotificationsForController::applications();
-
-
-        return view('admin.category.index', compact('categories', 'questions', 'passedTime','questionsForMsg', 'applicationsForMsg', 'applications', 'numberNotification', 'passedTimeApplication'
-));
+        $tasks = Task::paginate(10);
+        return view('admin.task.index', compact('tasks'));
     }
 }

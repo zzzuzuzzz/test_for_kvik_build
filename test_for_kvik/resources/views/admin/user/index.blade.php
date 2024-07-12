@@ -27,7 +27,8 @@
                     <div class="card">
                         <div class="card-header">
                             <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Добавить</a>
-                            <a href="{{ route('admin.admin.index') }}" class="btn btn-outline-primary ml-2">Показать только премиум пользователей</a>
+                            <a href="{{ route('admin.admin.index') }}" class="btn btn-outline-primary ml-2">Администраторы</a>
+                            <a href="{{ route('admin.premium.index') }}" class="btn btn-outline-primary ml-2">Премиум пользователи</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">
@@ -38,6 +39,7 @@
                                     <th>Имя пользователя</th>
                                     <th>Почта пользователя</th>
                                     <th>Статус пользователя</th>
+                                    <th>Роль пользователя</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,12 +49,15 @@
                                         <td><a href="{{ route('admin.user.show', $user->id) }}">{{ $user->name }}</a></td>
                                         <td><a href="{{ route('admin.user.show', $user->id) }}">{{ $user->email }}</a></td>
                                         <td>{{ $user->premium == 1 ? 'Премиум' : 'Обычный пользователь' }}</td>
+                                        <td>{{ $user->role == 'admin' ? 'Администратор' : 'Обычный пользователь' }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
-
+                        <div class="p-2">
+                            {{ $users->links() }}
+                        </div>
                     </div>
 
                 </div>

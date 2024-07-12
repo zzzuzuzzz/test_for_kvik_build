@@ -42,6 +42,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <select class="form-control" name="role">
+                            <option value="user" selected>Обычный пользователь</option>
+                            <option value="admin">Администратор</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Добавить">
                     </div>
                 </form>

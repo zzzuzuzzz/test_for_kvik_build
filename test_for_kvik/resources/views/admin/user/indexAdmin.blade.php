@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Премиум пользователи</h1>
+                    <h1 class="m-0">Администраторы</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -37,6 +37,7 @@
                                     <th>ID</th>
                                     <th>Имя пользователя</th>
                                     <th>Почта пользователя</th>
+                                    <th>Статус пользователя</th>
                                     <th>Роль пользователя</th>
                                 </tr>
                                 </thead>
@@ -47,12 +48,15 @@
                                         <td><a href="{{ route('admin.user.show', $user->id) }}">{{ $user->name }}</a></td>
                                         <td><a href="{{ route('admin.user.show', $user->id) }}">{{ $user->email }}</a></td>
                                         <td>{{ $user->premium == 1 ? 'Премиум' : 'Обычный пользователь' }}</td>
+                                        <td>{{ $user->role == 'admin' ? 'Администратор' : 'Обычный пользователь' }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
-
+                        <div class="p-2">
+                            {{ $users->links() }}
+                        </div>
                     </div>
 
                 </div>

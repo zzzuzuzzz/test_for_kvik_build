@@ -11,12 +11,19 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
         Route::group(['prefix' => '/users'], function () {
             Route::get('/', \App\Http\Controllers\Admin\User\IndexController::class)->name('admin.user.index');
             Route::get('/admins', \App\Http\Controllers\Admin\User\IndexAdminController::class)->name('admin.admin.index');
+            Route::get('/premium', \App\Http\Controllers\Admin\User\IndexPremiumController::class)->name('admin.premium.index');
             Route::get('/create', \App\Http\Controllers\Admin\User\CreateController::class)->name('admin.user.create');
             Route::post('/', \App\Http\Controllers\Admin\User\StoreController::class)->name('admin.user.store');
             Route::get('/{user}/edit', \App\Http\Controllers\Admin\User\EditController::class)->name('admin.user.edit');
             Route::get('/{user}', \App\Http\Controllers\Admin\User\ShowController::class)->name('admin.user.show');
             Route::patch('/{user}', \App\Http\Controllers\Admin\User\UpdateController::class)->name('admin.user.update');
             Route::delete('/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('admin.user.delete');
+        });
+
+        Route::group(['prefix' => '/tasks'], function () {
+            Route::get('/', \App\Http\Controllers\Admin\Task\IndexController::class)->name('admin.task.index');
+            Route::get('/{task}', \App\Http\Controllers\Admin\Task\ShowController::class)->name('admin.task.show');
+            Route::delete('/{task}', \App\Http\Controllers\Admin\Task\DeleteController::class)->name('admin.task.delete');
         });
     });
 });

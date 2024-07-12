@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->foreignId('status_id')->index()->constrained('statuses');
-            $table->date('date_create');
-            $table->date('dead_line');
+            $table->string('date_create');
+            $table->string('dead_line');
             $table->foreignId('group_id')->nullable()->index()->constrained('groups');
         });
     }

@@ -34,9 +34,9 @@
                                 <div class="post">
                                 @foreach($group_list as $group)
                                         @if($group->role == 'admin')
-                                            <a class="btn btn-lg btn-primary w-25" href="http://127.0.0.1:8000/laravel/vue/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
                                         @else
-                                            <a class="btn btn-lg btn-primary w-25" href="http://127.0.0.1:8000/laravel/vue/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/{{ $group->group_id }}">{{ $group->group_name }}</a>
                                         @endif
                                 @endforeach
                                 </div>

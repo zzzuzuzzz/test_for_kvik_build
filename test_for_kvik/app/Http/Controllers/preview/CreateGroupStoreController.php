@@ -26,6 +26,6 @@ class CreateGroupStoreController extends Controller
             'entered' => 1
         ]);
 
-        return redirect('http://localhost:5173/' . $group->id);
+        return redirect()->route('home');
     }
 }

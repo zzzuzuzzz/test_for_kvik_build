@@ -46,7 +46,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted flex-md-shrink-0" href="{{ route('register') }}">Зарегестрироваться!</a>
+        <a class="btn-getstarted flex-md-shrink-0" href="{{ route('register') }}">Зарегистрироваться!</a>
 
     </div>
 </header>
@@ -61,7 +61,7 @@
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">Увеличь эффективность своего бизнеса уже сейчас!</h1>
                     <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-                        <a href="{{ route('register') }}" class="btn-get-started mt-5">Зарегестрироваться! <i class="bi bi-arrow-right"></i></a>
+                        <a href="{{ route('register') }}" class="btn-get-started mt-5">Зарегистрироваться! <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
@@ -81,13 +81,13 @@
                 <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="content">
                         <h3>Кто мы</h3>
-                        <h2>Мы команда профессионалов, которая создала уникальный продукт для Вас!</h2>
+                        <h2>Мы - команда профессионалов, которая создала уникальный продукт для Вас!</h2>
                         <p>
-                            Нашим продуктом пользуется больше 1 000 человек ежедневно. Присоеденяетесь и вы!
+                            Нашим продуктом пользуются больше 1 000 человек ежедневно. Присоединяетесь и Вы!
                         </p>
                         <div class="text-center text-lg-start">
                             <a href="{{ route('register') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>Зарегестрироваться!</span>
+                                <span>Зарегистрироваться!</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -108,7 +108,7 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Наши приемущества</h2>
+            <h2>Наши преимущества</h2>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -119,7 +119,7 @@
                     <div class="card">
                         <img src="{{ asset('bladeAssets/assets/img/values-1.png') }}" class="img-fluid" alt="">
                         <h3>Международная компания</h3>
-                        <p>Наши клиенты находяться по всему миру!</p>
+                        <p>Наши клиенты находятся по всему миру!</p>
                     </div>
                 </div><!-- End Card Item -->
 
@@ -127,7 +127,7 @@
                     <div class="card">
                         <img src="{{ asset('bladeAssets/assets/img/values-2.png') }}" class="img-fluid" alt="">
                         <h3>Скорость нашей работы</h3>
-                        <p>С нами, Вы уже завтра увидите результаты эффективной работы.</p>
+                        <p>С нами Вы уже завтра увидите увеличение эффективности работы</p>
                     </div>
                 </div><!-- End Card Item -->
 
@@ -135,7 +135,7 @@
                     <div class="card">
                         <img src="{{ asset('bladeAssets/assets/img/values-3.png') }}" class="img-fluid" alt="">
                         <h3>Удобный интерфейс</h3>
-                        <p>Нашим продуктом сможет пользоваться каждый.</p>
+                        <p>Нашим продуктом сможет пользоваться каждый</p>
                     </div>
                 </div><!-- End Card Item -->
 
@@ -167,7 +167,7 @@
                         <i class="bi bi-journal-richtext color-orange flex-shrink-0" style="color: #ee6c20;"></i>
                         <div>
                             <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Компаний</p>
+                            <p>Компаний-партнеров</p>
                         </div>
                     </div>
                 </div><!-- End Stats Item -->
@@ -221,8 +221,8 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-item item-indigo position-relative">
                         <i class="bi bi-calendar4-week icon"></i>
-                        <h3>Таск менеджер</h3>
-                        <p>Вы моежете начать пользоваться нашим продуктом и без обучения. Нужно только попробовать</p>
+                        <h3>Task-менеджер</h3>
+                        <p>Вы можете начать пользоваться нашим продуктом и без обучения. Нужно только попробовать</p>
                     </div>
                 </div><!-- End Service Item -->
 
@@ -230,7 +230,7 @@
                     <div class="service-item item-pink position-relative">
                         <i class="bi bi-chat-square-text icon"></i>
                         <h3>Поддержка 24/7</h3>
-                        <p>наши операторы помогут Вам в любой непонятной ситуации</p>
+                        <p>Наши операторы помогут Вам в любой непонятной ситуации</p>
                     </div>
                 </div><!-- End Service Item -->
 
@@ -256,7 +256,7 @@
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="pricing-tem">
                         <h3 style="color: #20c997;">Бесплатный план</h3>
-                        <div class="price"><sup>$</sup>0<span> / м</span></div>
+                        <div class="price"><sup>$</sup>0<span> / мес</span></div>
                         <div class="icon">
                             <i class="bi bi-box" style="color: #20c997;"></i>
                         </div>
@@ -266,7 +266,7 @@
                             <li>До 50 активных задач</li>
                             <li class="na">Уникальные темы</li>
                             <li class="na">Статистика</li>
-                            <li class="na">Сосбтвенные статусы задач</li>
+                            <li class="na">Собственные статусы задач</li>
                         </ul>
                     </div>
                 </div><!-- End Pricing Item -->
@@ -275,17 +275,17 @@
                     <div class="pricing-tem">
                         <span class="featured">Хит</span>
                         <h3 style="color: #0dcaf0;">Стандартный план</h3>
-                        <div class="price"><sup>$</sup>19<span> / м</span></div>
+                        <div class="price"><sup>$</sup>19<span> / мес</span></div>
                         <div class="icon">
                             <i class="bi bi-send" style="color: #0dcaf0;"></i>
                         </div>
                         <ul>
-                            <li>Не ограничеснное колличество команд</li>
-                            <li>Не ограничеснное колличество человек в команде</li>
-                            <li>Не ограничеснное колличество задач</li>
+                            <li>Неограниченное количество команд</li>
+                            <li>Неограниченное количество человек в команде</li>
+                            <li>Неограниченное количество задач</li>
                             <li>Уникальные темы</li>
                             <li>Статистика</li>
-                            <li>Сосбтвенные статусы задач</li>
+                            <li>Собственные статусы задач</li>
                         </ul>
                     </div>
                 </div><!-- End Pricing Item -->
@@ -293,17 +293,17 @@
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                     <div class="pricing-tem">
                         <h3 style="color: #fd7e14;">Годовой план</h3>
-                        <div class="price"><sup>$</sup>200<span> / г</span></div>
+                        <div class="price"><sup>$</sup>200<span> / год</span></div>
                         <div class="icon">
                             <i class="bi bi-airplane" style="color: #fd7e14;"></i>
                         </div>
                         <ul>
-                            <li>Не ограничеснное колличество команд</li>
-                            <li>Не ограничеснное колличество человек в команде</li>
-                            <li>Не ограничеснное колличество задач</li>
+                            <li>Неограниченное количество команд</li>
+                            <li>Неограниченное количество человек в команде</li>
+                            <li>Неограниченное количество задач</li>
                             <li>Уникальные темы</li>
                             <li>Статистика</li>
-                            <li>Сосбтвенные статусы задач</li>
+                            <li>Собственные статусы задач</li>
                         </ul>
                     </div>
                 </div><!-- End Pricing Item -->
@@ -311,17 +311,17 @@
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                     <div class="pricing-tem">
                         <h3 style="color: #0d6efd;">Бизнес план</h3>
-                        <div class="price"><sup>$</sup>500<span> / г</span></div>
+                        <div class="price"><sup>$</sup>500<span> / год</span></div>
                         <div class="icon">
                             <i class="bi bi-rocket" style="color: #0d6efd;"></i>
                         </div>
                         <ul>
-                            <li>Не ограничеснное колличество команд и задач</li>
-                            <li>Не ограничеснное колличество человек в команде</li>
+                            <li>Неограниченное количество команд и задач</li>
+                            <li>Неограниченное количество человек в команде</li>
                             <li>Автоматизация Вашего бизнеса</li>
                             <li>Уникальные темы</li>
                             <li>Статистика</li>
-                            <li>Сосбтвенные статусы задач</li>
+                            <li>Собственные статусы задач</li>
                         </ul>
                     </div>
                 </div><!-- End Pricing Item -->
@@ -455,7 +455,7 @@
 
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Task Sprint</strong> <span>Все права защещены</span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Task Sprint</strong> <span>Все права защищены</span></p>
     </div>
 
 </footer>
@@ -470,7 +470,7 @@
 <script src="{{ asset('bladeAssets/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
 <script src="{{ asset('bladeAssets/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
 <script src="{{ asset('bladeAssets/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-<script src="{{ asset('bladeAssets/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('bladeAssets/assets/vendor/isotope-layout.blade.php/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('bladeAssets/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
 <!-- Main JS File -->

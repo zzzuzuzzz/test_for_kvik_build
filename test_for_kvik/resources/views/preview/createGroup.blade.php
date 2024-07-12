@@ -9,6 +9,9 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                        @if($user->premium = 1)
+                            <h5 class="profile-username text-center" style="color: gold">Premium</h5>
+                        @endif
                         <p class="text-muted text-center">{{ $user->email }}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -41,7 +44,7 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Название группы</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Пример названия группы" name="group_name">
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Введите название группы" name="group_name">
                                                 </div>
                                             </div>
                                             <div class="card-footer">

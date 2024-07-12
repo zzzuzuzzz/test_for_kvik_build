@@ -42,9 +42,9 @@
                     <input id="new-event-title" type="text" class="form-control" placeholder="Название события">
                     <textarea id="new-event-description" class="form-control mt-2" placeholder="Описание события"></textArea>
                     <input id="new-event-data" type="date" class="form-control mt-2" placeholder="Дата начала">
-                    <label>Дата события</label>
+                    <label class="text-center w-100">Дата начала события</label>
                     <input id="new-event-dead-line" type="date" class="form-control mt-2" placeholder="Конечный срок">
-                    <label>Крайний срок</label>
+                    <label class="text-center w-100">Дата окончания события</label>
                     <button id="add-new-event" type="button" class="btn btn-primary mt-2">Добавить событие</button>
                   </div>
                 </div>
@@ -119,6 +119,7 @@ const user_name = Cookie.getCookie('user_name')
 const user_email = Cookie.getCookie('user_email')
 let group_name;
 
+console.log(url)
 if (url[2] === 'vue') {
     if (Cookie.getCookie('group_' + group_id + '[1]')) {
         if (Cookie.getCookie('group_' + group_id + '[3]') !== 'admin') {
@@ -206,97 +207,97 @@ export default {
       this.axios.get('/api/tasks/' + url)
           .then(res => {
               console.log(res)
-            $(function () {
-              function postTask(task, url) {
-                axios.post('/api/tasks/' + url, task)
-                    .then(res => {
-                        console.log(res)
-                      calendar.addEvent({
-                        id: res.data,
-                        title: valTitle,
-                        description: valDescription,
-                        start: valData,
-                        end: valDead,
-                        backgroundColor: currColor,
-                        borderColor: currColor,
-                        allDay: true
-                      })
-                    })
-              }
-              let Calendar = FullCalendar.Calendar;
-              let calendarEl = document.getElementById('calendar');
-              let calendar = new Calendar(calendarEl, {
-                locale: 'ru',
-                headerToolbar: {
-                  left  : 'prev,next today',
-                  center: 'title',
-                  right: ''
-                },
-                themeSystem: 'bootstrap',
-                events: res.data.data,
-                eventClick: function(info) {
-                  console.log(info);
-                  popup('buttonTrigger', info.event._def.title, info.event._def.extendedProps.description, info.event._def.publicId)
-                },
-                editable  : true,
-                droppable : true,
-                eventDrop: function(info) {
-                  console.log(info)
-                  if (!confirm("Вы уверены что хотите перенести событие?")) {
-                    info.revert();
-                  } else {
-                    axios.patch('/api/tasks/' + info.event.id, {
-                      start: info.event.start,
-                      end: info.event.end
-                    })
+              $(function () {
+                  function postTask(task, url) {
+                      axios.post('/api/tasks/' + url, task)
+                          .then(res => {
+                              console.log(res)
+                              calendar.addEvent({
+                                  id: res.data,
+                                  title: valTitle,
+                                  description: valDescription,
+                                  start: valData,
+                                  end: valDead,
+                                  backgroundColor: currColor,
+                                  borderColor: currColor,
+                                  allDay: true
+                              })
+                          })
                   }
-                },
-                eventResize: function(info) {
-                  if (!confirm("Вы уверены что хотите сдвинуть крайний срок события?")) {
-                    info.revert();
-                  } else {
-                      axios.patch('/api/tasks/' + info.event.id, {
-                        start: info.event.start,
-                        end: info.event.end
-                     })
+                  let Calendar = FullCalendar.Calendar;
+                  let calendarEl = document.getElementById('calendar');
+                  let calendar = new Calendar(calendarEl, {
+                      locale: 'ru',
+                      headerToolbar: {
+                          left  : 'prev,next today',
+                          center: 'title',
+                          right: ''
+                      },
+                      themeSystem: 'bootstrap',
+                      events: res.data.data,
+                      eventClick: function(info) {
+                          console.log(info);
+                          popup('buttonTrigger', info.event._def.title, info.event._def.extendedProps.description, info.event._def.publicId)
+                      },
+                      editable  : true,
+                      droppable : true,
+                      eventDrop: function(info) {
+                          console.log(info)
+                          if (!confirm("Вы уверены что хотите перенести событие?")) {
+                              info.revert();
+                          } else {
+                              axios.patch('/api/tasks/' + info.event.id, {
+                                  start: info.event.start,
+                                  end: info.event.end
+                              })
+                          }
+                      },
+                      eventResize: function(info) {
+                          if (!confirm("Вы уверены что хотите сдвинуть крайний срок события?")) {
+                              info.revert();
+                          } else {
+                              axios.patch('/api/tasks/' + info.event.id, {
+                                  start: info.event.start,
+                                  end: info.event.end
+                              })
+                          }
+                      },
+                  });
+                  calendar.render();
+
+                  window.cal = {
+                      calendar: calendar
                   }
-                },
-              });
-              calendar.render();
 
-              window.cal = {
-                calendar: calendar
-              }
-
-              let valTitle
-              let valDescription
-              let valData
-              let valDead
-              let currColor = 'blue'
-              $('#add-new-event').click(function (e) {
-                e.preventDefault()
-                valTitle = $('#new-event-title').val()
-                valDescription = $('#new-event-description').val()
-                valData = $('#new-event-data').val()
-                valDead = $('#new-event-dead-line').val()
-                valDead = new Date(valDead)
-                valDead.setDate(valDead.getDate() + 1)
-                console.log(valDead)
-                if (valTitle.length == 0 || valDescription.length == 0 || valData.length == 0 || valDead.length == 0) {
-                  return
-                }
-                postTask({
-                  title: valTitle,
-                  description: valDescription,
-                  start: valData,
-                  end: valDead,
-                }, url)
-                $('#new-event-title').val('')
-                $('#new-event-description').val('')
-                $('#new-event-data').val('')
-                $('#new-event-dead-line').val('')
+                  let valTitle
+                  let valDescription
+                  let valData
+                  let valDead
+                  let currColor = 'blue'
+                  $('#add-new-event').click(function (e) {
+                      e.preventDefault()
+                      valTitle = $('#new-event-title').val()
+                      valDescription = $('#new-event-description').val()
+                      valData = $('#new-event-data').val()
+                      valDead = $('#new-event-dead-line').val()
+                      valDead = new Date(valDead)
+                      valDead.setDate(valDead.getDate() + 1)
+                      console.log(valDead)
+                      if (valTitle.length == 0 || valDescription.length == 0 || valData.length == 0 || valDead.length == 0) {
+                          return
+                      }
+                      postTask({
+                          title: valTitle,
+                          description: valDescription,
+                          start: valData,
+                          end: valDead,
+                      }, url)
+                      $('#new-event-title').val('')
+                      $('#new-event-description').val('')
+                      $('#new-event-data').val('')
+                      $('#new-event-dead-line').val('')
+                  })
               })
-            })
           })
     }
   },

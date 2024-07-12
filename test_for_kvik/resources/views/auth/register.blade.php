@@ -45,7 +45,7 @@
                         </div>
                         <div class="row d-flex justify-content-center">
                             <div class="col-8 ">
-                                <button type="submit" class="btn btn-primary btn-block">Зарегестрироваться</button>
+                                <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
                             </div>
                             <a href="{{ route('login') }}" class="text-center mt-3">Уже есть аккаунт?</a>
                         </div>

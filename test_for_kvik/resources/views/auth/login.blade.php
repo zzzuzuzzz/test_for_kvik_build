@@ -5,7 +5,7 @@
         <div class="login-box">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="{{ route('welcome') }}" class="h1"><b>Warmest</b></a>
+                    <a href="{{ route('welcome') }}" class="h1" style="text-decoration: none"><b>Task Sprint</b></a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Авторизация</p>

@@ -8,6 +8,9 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                        @if($user->premium = 1)
+                            <h5 class="profile-username text-center" style="color: gold">Premium</h5>
+                        @endif
                         <p class="text-muted text-center">{{ $user->email }}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -33,11 +36,19 @@
                                 </div>
                                 <div class="post">
                                 @foreach($group_list as $group)
-                                        @if($group->role == 'admin')
-                                            <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                    @if($group->premium == 1)
+                                            @if($group->role == 'admin')
+                                                <a class="btn btn-lg btn-primary w-25" href="/laravel/premium/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            @else
+                                                <a class="btn btn-lg btn-primary w-25" href="/laravel/premium/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            @endif
                                         @else
-                                            <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/{{ $group->group_id }}">{{ $group->group_name }}</a>
-                                        @endif
+                                            @if($group->role == 'admin')
+                                                <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            @else
+                                                <a class="btn btn-lg btn-primary w-25" href="/laravel/vue/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            @endif
+                                    @endif
                                 @endforeach
                                 </div>
                             </div>

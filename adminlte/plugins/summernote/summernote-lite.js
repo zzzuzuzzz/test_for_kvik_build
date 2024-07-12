@@ -2132,7 +2132,7 @@ var Context = /*#__PURE__*/function () {
     this.initialize();
   }
   /**
-   * create layout and initialize modules and other resources
+   * create layout.blade.php and initialize modules and other resources
    */
 
 
@@ -2147,7 +2147,7 @@ var Context = /*#__PURE__*/function () {
       return this;
     }
     /**
-     * destroy modules and other resources and remove layout
+     * destroy modules and other resources and remove layout.blade.php
      */
 
   }, {

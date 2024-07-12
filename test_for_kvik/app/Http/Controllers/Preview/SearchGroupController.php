@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\preview;
+namespace App\Http\Controllers\Preview;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;

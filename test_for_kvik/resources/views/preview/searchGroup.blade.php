@@ -9,6 +9,9 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                        @if($user->premium = 1)
+                            <h5 class="profile-username text-center" style="color: gold">Premium</h5>
+                        @endif
                         <p class="text-muted text-center">{{ $user->email }}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -33,7 +36,7 @@
                             <div class="active tab-pane" id="activity">
                                 <div class="post">
                                     <div class="container-fluid">
-                                        <h2 class="text-center display-4">Введите индефикатор группы</h2>
+                                        <h2 class="text-center display-4">Введите идентификатор группы</h2>
                                         <div class="row justify-content-center">
                                                 <form action="{{ route('enterToGroup') }}" method="post" class="w-100">
                                                     @csrf

@@ -31,11 +31,18 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
 Route::group(['prefix' => '/laravel', 'middleware' => ['auth', 'admin']], function () {
     Route::group(['prefix' => '/home'], function () {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-        Route::get('/search', \App\Http\Controllers\preview\SearchGroupController::class)->name('search');
-        Route::post('/search', \App\Http\Controllers\preview\EnterGroupController::class)->name('enterToGroup');
-        Route::get('/premiumPreview', \App\Http\Controllers\preview\PremiumPreviewController::class)->name('premiumPreview');
-        Route::get('/createGroup', \App\Http\Controllers\preview\CreateGroupController::class)->name('createGroup');
-        Route::post('/createGroup', \App\Http\Controllers\preview\CreateGroupStoreController::class)->name('createGroupStore');
+        Route::get('/search', \App\Http\Controllers\Preview\SearchGroupController::class)->name('search');
+        Route::post('/search', \App\Http\Controllers\Preview\EnterGroupController::class)->name('enterToGroup');
+        Route::get('/premiumPreview', \App\Http\Controllers\Preview\PremiumPreviewController::class)->name('premiumPreview');
+        Route::get('/premiumBuy', \App\Http\Controllers\Preview\PremiumBuyController::class)->name('premiumBuy');
+        Route::patch('/premiumBuy', \App\Http\Controllers\Preview\PremiumBuyUpdateController::class)->name('premiumBuyUpdate');
+        Route::get('/createGroup', \App\Http\Controllers\Preview\CreateGroupController::class)->name('createGroup');
+        Route::post('/createGroup', \App\Http\Controllers\Preview\CreateGroupStoreController::class)->name('createGroupStore');
+    });
+
+    Route::group(['prefix' => '/premium'], function () {
+        Route::get('/{group_id}', \App\Http\Controllers\Premium\IndexController::class)->name('premium.index');
+        Route::get('/admin/{group_id}', \App\Http\Controllers\Premium\AdminIndexController::class)->name('premium.admin.index');
     });
 
     Route::get('{page}', \App\Http\Controllers\Vue\IndexController::class)->where('page', '.*');

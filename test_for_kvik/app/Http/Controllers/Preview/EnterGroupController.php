@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\preview;
+namespace App\Http\Controllers\Preview;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\preview\EnterGroupStoreRequest;
@@ -16,12 +16,11 @@ class EnterGroupController extends Controller
         $group = Group::find($date['group_id']);
         $user = auth()->user()->id;
         if (!$group) {
-            return back()->with('badStatus', 'К сожалению не удалось найти группу. Проверьте индификатор группы, запросите приглашение от группы или обратитесь в службу поддержки.');
+            return back()->with('badStatus', 'К сожалению, не удалось найти группу. Проверьте идентификатор группы, запросите приглашение от группы или обратитесь в службу поддержки.');
         } else {
             Role::firstOrCreate([
                 'user_id' => $user,
                 'group_id' => $group->id,
-                'entered' => false
             ],[
                 'user_id' => $user,
                 'group_id' => $group->id,

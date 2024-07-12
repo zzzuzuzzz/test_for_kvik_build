@@ -16,7 +16,7 @@ class EnterGroupController extends Controller
         $group = Group::find($date['group_id']);
         $user = auth()->user()->id;
         if (!$group) {
-            return back()->with('status', 'К сожалению не удалось найти группу. Проверьте индификатор группы, запросите приглашение от группы или обратитесь в службу поддержки.');
+            return back()->with('badStatus', 'К сожалению не удалось найти группу. Проверьте индификатор группы, запросите приглашение от группы или обратитесь в службу поддержки.');
         } else {
             Role::firstOrCreate([
                 'user_id' => $user,
@@ -29,6 +29,6 @@ class EnterGroupController extends Controller
                 'entered' => false
             ]);
         }
-        return view('preview.searchGroup');
+        return back()->with('goodStatus', 'Заявка успешно подана.');
     }
 }

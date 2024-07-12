@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.bladeApp')
 
 @section('content')
-
 <div class="container">
     <div class="container-fluid">
         <div class="row">
@@ -41,9 +40,9 @@
                                 <div class="post">
                                 @foreach($group_list as $group)
                                         @if($group->role == 'admin')
-                                            <a class="btn btn-lg btn-primary w-25" href="http://localhost:5173/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            <a class="btn btn-lg btn-primary w-25" href="http://127.0.0.1:8000/vue/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
                                         @else
-                                            <a class="btn btn-lg btn-primary w-25" href="http://localhost:5173/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                            <a class="btn btn-lg btn-primary w-25" href="http://127.0.0.1:8000/vue/{{ $group->group_id }}">{{ $group->group_name }}</a>
                                         @endif
                                 @endforeach
                                 </div>
@@ -55,5 +54,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

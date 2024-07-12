@@ -14,3 +14,7 @@ Route::group(['prefix' => '/home'], function () {
     Route::get('/createGroup', \App\Http\Controllers\preview\CreateGroupController::class)->name('createGroup');
     Route::post('/createGroup', \App\Http\Controllers\preview\CreateGroupStoreController::class)->name('createGroupStore');
 });
+
+
+
+Route::get('{page}', \App\Http\Controllers\Vue\IndexController::class)->where('page', '.*');

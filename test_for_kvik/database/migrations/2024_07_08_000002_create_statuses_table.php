@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('color');
-            $table->foreignId('group_id')->index()->constrained('groups');
+            $table->foreignId('group_id')->nullable()->index()->constrained('groups');
         });
     }
 

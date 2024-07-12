@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bladeApp')
 
 @section('content')
 
@@ -50,9 +50,13 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                            @if (session('status'))
+                                            @if (session('badStatus'))
                                                 <div class="alert alert-danger w-75 mt-3">
-                                                    {{ session('status') }}
+                                                    {{ session('badStatus') }}
+                                                </div>
+                                            @elseif(session('goodStatus'))
+                                                <div class="alert alert-success w-75 mt-3">
+                                                    {{ session('goodStatus') }}
                                                 </div>
                                             @endif
                                         </div>

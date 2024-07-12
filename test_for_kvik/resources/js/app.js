@@ -1,7 +1,10 @@
 import './bootstrap';
 import { createApp } from 'vue';
+import App from './App.vue'
+import router from './router'
+import axios from "axios";
 
-const app = createApp({});
+const app = createApp(App)
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
@@ -11,4 +14,10 @@ app.component('example-component', ExampleComponent);
 //     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
 // });
 
+app.use(router)
+app.config.globalProperties.axios = axios
 app.mount('#app');
+
+
+
+

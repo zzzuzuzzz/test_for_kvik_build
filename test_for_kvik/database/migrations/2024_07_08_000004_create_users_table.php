@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('premium')->default(0);
-            $table->string('role')->default('user');
+            $table->boolean('premium');
+            $table->string('role');
             $table->foreignId('theme_id')->default(1)->index()->constrained('themes');
             $table->rememberToken();
             $table->timestamps();

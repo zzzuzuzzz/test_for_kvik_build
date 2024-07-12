@@ -14,7 +14,7 @@
           <h5 class="info">{{ user_name }}</h5>
           <div class="info">{{ user_email }}</div>
           <div class="info">{{ group_name }}</div>
-            <a href="/home" class="btn btn-primary w-50">Выход</a>
+            <a href="/laravel/home" class="btn btn-primary w-50">Выход</a>
         </div>
       </div>
     </aside>
@@ -56,19 +56,19 @@
   import axios from "axios";
 
   const url = window.location.pathname.split('/')
-  const group_id = url[2]
+  const group_id = url[3]
   const user_name = Cookie.getCookie('user_name')
   const user_email = Cookie.getCookie('user_email')
   let group_name;
 
-  if (url[1] === 'vue') {
+  if (url[2] === 'vue') {
       if (Cookie.getCookie('group_' + group_id + '[1]')) {
           if (Cookie.getCookie('group_' + group_id + '[3]') !== 'user') {
-              location.href = '/home'
+              location.href = '/laravel/home'
           }
           group_name = Cookie.getCookie('group_' + group_id + '[2]')
       } else {
-          location.href = '/home'
+          location.href = '/laravel/home'
       }
   }
 

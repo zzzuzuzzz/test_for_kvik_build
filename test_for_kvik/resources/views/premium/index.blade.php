@@ -140,7 +140,10 @@
 
                             html += '</select>' +
                                 '<button type="submit" class="btn btn-success mt-2">Сохранить новый статус</button>' +
-                                '</form></div>';
+                                '</form><div>' +
+                                '<form id="deleteForm" style="display: flex; flex-direction: column; align-items: center;" action="/api/premium/tasks/delete/'+info.event._def.publicId+'" method="post">' +
+                                '<button type="submit" class="btn btn-danger mt-2">Удалить задание</button>' +
+                                '</form></div>'
 
                             popupElement.innerHTML = html
                             myPopup.show();

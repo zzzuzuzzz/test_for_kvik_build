@@ -10,6 +10,7 @@ Route::patch('/tasks/{task_id}', \App\Http\Controllers\API\Task\UpdateController
 Route::post('/tasks/done/{task_id}', \App\Http\Controllers\API\Task\DoneController::class);
 Route::post('/premium/tasks/done/{task_id}', \App\Http\Controllers\API\Task\PremiumDoneController::class);
 Route::delete('/tasks/{task_id}', \App\Http\Controllers\API\Task\DeleteController::class);
+Route::post('/premium/tasks/delete/{task_id}', \App\Http\Controllers\API\Task\PremiumDeleteController::class);
 
 Route::get('/users/{group_id}', \App\Http\Controllers\API\User\ShowController::class);
 Route::post('/users/{user_id}', \App\Http\Controllers\API\User\StoreController::class);

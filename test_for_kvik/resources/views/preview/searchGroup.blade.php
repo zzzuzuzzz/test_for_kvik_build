@@ -9,7 +9,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">{{ $user->name }}</h3>
-                        @if($user->premium = 1)
+                        @if($user->premium == 1)
                             <h5 class="profile-username text-center" style="color: gold">Premium</h5>
                         @endif
                         <p class="text-muted text-center">{{ $user->email }}</p>

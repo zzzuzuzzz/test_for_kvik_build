@@ -86,6 +86,13 @@
     document.getElementById('navCalendar').href = 'http://localhost/laravel/premium/admin/calendar/' + group_id
     document.getElementById('navUsers').href = 'http://localhost/laravel/premium/admin/users/' + group_id
 
+    function eventDelete(url) {
+        axios.delete('/api/tasks/' + url)
+            .then(res => {
+                console.log(res)
+            })
+    }
+
     $(function () {
         axios.get('/api/premium/tasks/' + group_id)
             .then(res => {
@@ -113,6 +120,13 @@
                     value.statusId = value.color.id
                     value.color.status_bad_name ? value.statusBadName = 'Задание просрочено' : value.statusBadName = ''
                 })
+                function eventDelete(url){
+                    axios.delete('/api/tasks/' + url)
+                        .then(res => {
+                            location.reload()
+                        })
+                }
+
                 let Calendar = FullCalendar.Calendar;
                 let calendarEl = document.getElementById('calendar');
                 let calendar = new Calendar(calendarEl, {
@@ -134,6 +148,7 @@
                                 $('.my-popup').remove()
                             },
                         });
+
                         let popupElement = document.querySelector(".popup-body")
                         let array = info.event._def.extendedProps.statuses;
                         let html = '<div style="display: flex; flex-direction: column"><p>Описание: '+info.event._def.extendedProps.description+'</p>' +
@@ -149,7 +164,11 @@
 
                         html += '</select>' +
                             '<button type="submit" class="btn btn-success mt-2">Сохранить новый статус</button>' +
-                            '</form></div>';
+                            '</form><div>' +
+                            '<form id="deleteForm" style="display: flex; flex-direction: column; align-items: center;" action="/api/premium/tasks/delete/'+info.event._def.publicId+'" method="post">' +
+                            '<button type="submit" class="btn btn-danger mt-2">Удалить задание</button>' +
+                            '</form></div>'
+
 
                         popupElement.innerHTML = html
                         myPopup.show();

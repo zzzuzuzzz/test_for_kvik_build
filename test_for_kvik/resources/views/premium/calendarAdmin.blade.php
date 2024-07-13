@@ -17,7 +17,7 @@
                         <div class="sticky-top mb-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Создать задачу</h3>
+                                    <h3 class="card-title text-center w-100">Создать задачу</h3>
                                 </div>
                                 <div class="card-body">
                                     <input id="new-event-title" type="text" class="form-control" placeholder="Название события">
@@ -26,7 +26,7 @@
                                     <label class="text-center w-100">Дата начала события</label>
                                     <input id="new-event-dead-line" type="date" class="form-control mt-2" placeholder="Конечный срок">
                                     <label class="text-center w-100">Дата окончания события</label>
-                                    <button id="add-new-event" type="button" class="btn btn-primary mt-2">Добавить событие</button>
+                                    <button id="add-new-event" type="button" class="btn btn-primary mt-2 w-100">Добавить событие</button>
                                 </div>
                             </div>
                         </div>

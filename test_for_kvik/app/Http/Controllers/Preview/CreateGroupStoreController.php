@@ -22,7 +22,7 @@ class CreateGroupStoreController extends Controller
         Role::firstOrCreate([
             'user_id' => $user->id,
             'group_id' => $group->id,
-            'role' => 'admin',
+            'group_role' => 'admin',
             'entered' => 1
         ]);
 

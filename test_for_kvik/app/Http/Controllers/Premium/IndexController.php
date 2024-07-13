@@ -8,6 +8,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        return view('premium.index');
+        $user = auth()->user();
+        return view('premium.index', compact('user'));
     }
 }

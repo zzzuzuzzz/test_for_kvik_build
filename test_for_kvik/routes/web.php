@@ -42,7 +42,11 @@ Route::group(['prefix' => '/laravel', 'middleware' => ['auth', 'admin']], functi
 
     Route::group(['prefix' => '/premium'], function () {
         Route::get('/{group_id}', \App\Http\Controllers\Premium\IndexController::class)->name('premium.index');
-        Route::get('/admin/{group_id}', \App\Http\Controllers\Premium\AdminIndexController::class)->name('premium.admin.index');
+//        Route::get('/admin/{group_id}', \App\Http\Controllers\Premium\AdminIndexController::class)->name('premium.admin.index');
+        Route::get('/admin/calendar/{group_id}', \App\Http\Controllers\Premium\AdminCalendarController::class)->name('premium.admin.calendar');
+        Route::get('/admin/users/{group_id}', \App\Http\Controllers\Premium\User\IndexController::class)->name('premium.admin.users.index');
+        Route::patch('/admin/users/{user_id}/{group_id}', \App\Http\Controllers\Premium\User\UpdateController::class)->name('premium.admin.users.patch');
+        Route::delete('/admin/users/{user_id}/{group_id}', \App\Http\Controllers\Premium\User\DeleteController::class)->name('premium.admin.users.delete');
     });
 
     Route::get('{page}', \App\Http\Controllers\Vue\IndexController::class)->where('page', '.*');

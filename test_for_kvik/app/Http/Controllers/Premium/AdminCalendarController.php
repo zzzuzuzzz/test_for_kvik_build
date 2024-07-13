@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Premium;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
-class AdminIndexController extends Controller
+class AdminCalendarController extends Controller
 {
     public function __invoke()
     {
         $user = auth()->user();
-        return view('premium.indexAdmin', compact('user'));
+        return view('premium.calendarAdmin', compact('user'));
     }
 }

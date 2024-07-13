@@ -24,7 +24,7 @@ class EnterGroupController extends Controller
             ],[
                 'user_id' => $user,
                 'group_id' => $group->id,
-                'role' => 'user',
+                'group_role' => 'user',
                 'entered' => false
             ]);
         }

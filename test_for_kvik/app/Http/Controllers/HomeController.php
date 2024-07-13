@@ -33,7 +33,7 @@ class HomeController extends Controller
             $group['premium'] = $group_from_db->premium;
             setcookie('group_' . $group->group_id . '[1]', $group_from_db->id);
             setcookie('group_' . $group->group_id . '[2]', $group_from_db->group_name);
-            setcookie('group_' . $group->group_id . '[3]', $group['role']);
+            setcookie('group_' . $group->group_id . '[3]', $group['group_role']);
         }
         $year = time() + 3600 * 24 * 31 * 12;
         setcookie('user_name', $user->name, $year);

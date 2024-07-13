@@ -42,20 +42,20 @@
             <div class="user-panel pb-3 mb-3 d-flex flex-column align-items-center">
                 <h5 class="info">{{ $user->name }}</h5>
                 <div class="info">{{ $user->email }}</div>
-                {{--                    <div class="info">{{ group_name }}</div>--}}
-                {{--                <a href="/laravel/home" class="btn btn-primary w-50">Выход</a>--}}
+                <label class="info" style="color: gold" id="group_name"></label>
+                <a href="/laravel/home" class="btn btn-primary w-50">Выход</a>
             </div>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route('admin.user.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Участники группы</p>
+                    <a class="nav-link" id="navCalendar">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>Календарь</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.task.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>Календарь</p>
+                    <a class="nav-link" id="navUsers">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Участники группы</p>
                     </a>
                 </li>
             </ul>
@@ -72,12 +72,24 @@
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
 <script>
-    const group_id = window.location.pathname.split('/')[4]
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    const group_id = window.location.pathname.split('/')[5]
+    let group_name = getCookie('group_' + group_id + '[2]')
+    document.getElementById('group_name').textContent = group_name
+
+    document.getElementById('navCalendar').href = 'http://localhost/laravel/premium/admin/calendar/' + group_id
+    document.getElementById('navUsers').href = 'http://localhost/laravel/premium/admin/users/' + group_id
 
     $(function () {
-        axios.get('/api/tasks/' + group_id)
+        axios.get('/api/premium/tasks/' + group_id)
             .then(res => {
-
+                console.log(res)
                 function postTask(task, url) {
                     axios.post('/api/tasks/' + url, task)
                         .then(res => {
@@ -95,6 +107,12 @@
                         })
                 }
 
+                res.data.data.forEach(function (value) {
+                    value.backgroundColor = value.color.color
+                    value.borderColor = value.color.color
+                    value.statusId = value.color.id
+                    value.color.status_bad_name ? value.statusBadName = 'Задание просрочено' : value.statusBadName = ''
+                })
                 let Calendar = FullCalendar.Calendar;
                 let calendarEl = document.getElementById('calendar');
                 let calendar = new Calendar(calendarEl, {
@@ -107,8 +125,7 @@
                     themeSystem: 'bootstrap',
                     events: res.data.data,
                     eventClick: function(info) {
-                        // popup('buttonTrigger', info.event._def.title, info.event._def.extendedProps.description, info.event._def.publicId)
-                        // location.href = 'http://localhost/laravel/premium/tasks/' + group_id + '/' + info.event._def.publicId
+                        console.log(info)
                         const myPopup = new Popup({
                             id: "my-popup",
                             title: info.event._def.title,
@@ -118,15 +135,23 @@
                             },
                         });
                         let popupElement = document.querySelector(".popup-body")
-                        let description = document.createElement("p")
-                        description.textContent = info.event._def.extendedProps.description
-                        let start = document.createElement("p")
-                        start.textContent = info.event._def.extendedProps.description
-                        let end = document.createElement("p")
-                        end.textContent = info.event._def.extendedProps.description
-                        popupElement.append(description)
-                        popupElement.append(start)
-                        popupElement.append(end)
+                        let array = info.event._def.extendedProps.statuses;
+                        let html = '<div style="display: flex; flex-direction: column"><p>Описание: '+info.event._def.extendedProps.description+'</p>' +
+                            '<p>Дата начала: '+info.event.startStr+'</p>' +
+                            '<p>Крайний срок: '+info.event.endStr+'</p>' +
+                            '<p>'+info.event._def.extendedProps.statusBadName+'</p>' +
+                            '<form id="formInPopup" style="display: flex; flex-direction: column; align-items: center;" action="/api/premium/tasks/done/'+info.event._def.publicId+'" method="post">' +
+                            '<select name="statusSelect">'
+
+                        array.forEach(function(value){
+                            html += '<option value="'+value.id+'">'+value.title+'</option>';
+                        });
+
+                        html += '</select>' +
+                            '<button type="submit" class="btn btn-success mt-2">Сохранить новый статус</button>' +
+                            '</form></div>';
+
+                        popupElement.innerHTML = html
                         myPopup.show();
                     },
                     editable  : true,
